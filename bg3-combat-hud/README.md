@@ -1,4 +1,6 @@
 # BG3 Combat HUD
+<img width="806" height="157" alt="image" src="https://github.com/user-attachments/assets/942041a5-37a3-4dd1-ae22-08ec84924a90" />
+
 
 A Baldur's Gate 3-inspired combat HUD module for Foundry Virtual Tabletop.
 
