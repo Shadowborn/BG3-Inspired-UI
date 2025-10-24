@@ -7,7 +7,7 @@ A Baldur's Gate 3-inspired combat HUD module for Foundry Virtual Tabletop.
 ## Features
 
 - **Bottom-Panel Interface**: BG3-style HUD positioned at the bottom of the screen
-- **Character Portrait & Stats**: Circular portrait with HP bar, AC display, and condition tracking
+- **Character Portrait & Stats**: Circular portrait with HP bar, AC display, Available Spell slot and condition tracking
 - **Action Economy**: Visual indicators for Action, Bonus Action, and Reaction
 - **Hotbar System**: 10 customizable slots with keyboard shortcuts (1-0)
 - **Spell Slot Tracker**: Visual pip display for all spell levels
