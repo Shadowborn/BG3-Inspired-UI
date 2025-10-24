@@ -20,7 +20,7 @@ A Baldur's Gate 3-inspired combat HUD module for Foundry Virtual Tabletop.
 ### Method 1: Manifest URL
 1. In Foundry VTT, go to **Add-on Modules**
 2. Click **Install Module**
-3. Paste this manifest URL: `https://github.com/yourusername/bg3-combat-hud/releases/latest/download/module.json`
+3. Paste this manifest URL: `[https://github.com/yourusername/bg3-combat-hud/releases/latest/download/module.json](https://raw.githubusercontent.com/Shadowborn/BG3-Inspired-UI/main/bg3-combat-hud/module.json)`
 4. Click **Install**
 
 ### Method 2: Manual Installation
