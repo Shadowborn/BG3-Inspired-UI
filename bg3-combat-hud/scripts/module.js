@@ -93,16 +93,22 @@ Hooks.once('init', () => {
   });
 });
 
-Hooks.once('ready', () => {
+Hooks.once('ready', async () => {
   console.log('BG3 Combat HUD | Ready');
   game.bg3hud = new BG3CombatHUD();
+  
+  // Load hotbar for already-controlled tokens on page load
+  if (canvas.tokens?.controlled?.[0] && game.settings.get('bg3-combat-hud', 'enableHUD')) {
+    await game.bg3hud.loadHotbarSlots();
+    game.bg3hud.render(true);
+  }
 });
 
-Hooks.on('controlToken', (token, controlled) => {
+Hooks.on('controlToken', async (token, controlled) => {
   if (!game.bg3hud || !game.settings.get('bg3-combat-hud', 'enableHUD')) return;
   
   if (controlled) {
-    game.bg3hud.loadHotbarSlots();
+    await game.bg3hud.loadHotbarSlots();
     game.bg3hud.render(true);
   } else if (canvas.tokens.controlled.length === 0) {
     game.bg3hud.close();

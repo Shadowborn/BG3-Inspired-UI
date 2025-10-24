@@ -1,11 +1,11 @@
 /* BG3 Combat HUD - Authentic Dark Theme */
 
 :root {
-  --bg3-nearly-black: rgba(18, 15, 12, 0.98);
+  --bg3-nearly-black: rgba(5, 4, 3, 0.98);
   --bg3-dark-brown: rgba(28, 23, 18, 0.96);
   --bg3-border: rgba(60, 50, 40, 0.8);
   --bg3-border-dim: rgba(45, 38, 30, 0.6);
-  --bg3-slot-bg: rgba(22, 18, 14, 0.92);
+  --bg3-slot-bg: rgba(22, 18, 14, 0.973);
   --bg3-text: #e8e4dc;
   --bg3-text-dim: #9a9080;
   --bg3-hp-red: #c41e3a;
@@ -19,7 +19,7 @@
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
-  transform: translateX(-58%);
+  transform: translateX(-60%);
   display: flex;
   justify-content: center;
   align-items: flex-end;

@@ -105,12 +105,20 @@ export class BG3CombatHUD extends Application {
       }));
   }
 
-  loadHotbarSlots() {
+  async loadHotbarSlots() {
     if (!this.actor) {
       this.hotbarSlots = Array(12).fill(null);
       return;
     }
     
+    // Try to load saved hotbar from user flags
+    const saved = await this.loadHotbarFromFlags();
+    if (saved) {
+      this.hotbarSlots = saved;
+      return;
+    }
+    
+    // No saved data - auto-populate with weapons and cantrips
     const items = this.actor.items;
     const weapons = items.filter(i => i.type === 'weapon').slice(0, 2);
     const cantrips = items.filter(i => i.type === 'spell' && i.system.level === 0).slice(0, 10);
@@ -124,6 +132,62 @@ export class BG3CombatHUD extends Application {
     cantrips.forEach((spell, idx) => {
       if (idx < 10) this.hotbarSlots[idx + 2] = spell;
     });
+  }
+
+  async loadHotbarFromFlags() {
+    if (!this.actor) return null;
+    
+    try {
+      const flagKey = `hotbar-${this.actor.id}`;
+      const savedSlots = game.user.getFlag('bg3-combat-hud', flagKey);
+      
+      console.log(`BG3 Combat HUD | Loading hotbar for ${this.actor.name} (${this.actor.id})`);
+      console.log(`BG3 Combat HUD | User: ${game.user.name}, Saved slots:`, savedSlots);
+      
+      if (!savedSlots) return null;
+      
+      // Restore items from saved UUIDs
+      const restoredSlots = await Promise.all(
+        savedSlots.map(async (slotData) => {
+          if (!slotData || !slotData.uuid) return null;
+          try {
+            return await fromUuid(slotData.uuid);
+          } catch (e) {
+            console.warn('BG3 Combat HUD | Failed to restore item:', slotData.uuid);
+            return null;
+          }
+        })
+      );
+      
+      console.log('BG3 Combat HUD | Restored slots:', restoredSlots.filter(s => s).length, 'items');
+      return restoredSlots;
+    } catch (error) {
+      console.error('BG3 Combat HUD | Error loading hotbar from flags:', error);
+      return null;
+    }
+  }
+
+  async saveHotbarToFlags() {
+    if (!this.actor) return;
+    
+    try {
+      const flagKey = `hotbar-${this.actor.id}`;
+      const slotsData = this.hotbarSlots.map(item => {
+        if (!item) return null;
+        return {
+          uuid: item.uuid,
+          name: item.name
+        };
+      });
+      
+      console.log(`BG3 Combat HUD | Saving hotbar for ${this.actor.name} (${this.actor.id})`);
+      console.log(`BG3 Combat HUD | User: ${game.user.name}, Items:`, slotsData.filter(s => s).length);
+      
+      await game.user.setFlag('bg3-combat-hud', flagKey, slotsData);
+      console.log('BG3 Combat HUD | Hotbar saved successfully');
+    } catch (error) {
+      console.error('BG3 Combat HUD | Error saving hotbar to flags:', error);
+    }
   }
 
   activateListeners(html) {
@@ -227,6 +291,7 @@ export class BG3CombatHUD extends Application {
         const slotIndex = parseInt(event.currentTarget.dataset.slot);
         
         this.hotbarSlots[slotIndex] = item;
+        await this.saveHotbarToFlags();
         this.render(false);
       }
     } catch (error) {
