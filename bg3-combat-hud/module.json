@@ -27,6 +27,6 @@
     }
   ],
   "url": "https://github.com/Shadowborn/BG3-Inspired-UI",
-  "manifest": "https://github.com/Shadowborn/BG3-Inspired-UI/module.json",
-  "download": "https://github.com/Shadowborn/BG3-Inspired-UI/module.zip"
+  "manifest": "https://github.com/Shadowborn/BG3-Inspired-UI/blob/e0a54b9f16dc5da9fed7859a1712816069779e65/bg3-combat-hud/module.json",
+  "download": "https://github.com/Shadowborn/BG3-Inspired-UI/blob/e0a54b9f16dc5da9fed7859a1712816069779e65/bg3-combat-hud/module.zip"
 }
