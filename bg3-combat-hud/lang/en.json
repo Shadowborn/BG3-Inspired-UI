@@ -1,0 +1,34 @@
+{
+  "BG3COMBATHUD": {
+    "Settings": {
+      "EnableHUD": {
+        "Name": "Enable Combat HUD",
+        "Hint": "Enable or disable the BG3-style combat HUD"
+      },
+      "HUDOpacity": {
+        "Name": "HUD Opacity",
+        "Hint": "Adjust the transparency of the HUD (0-100)"
+      }
+    },
+    "Keybindings": {
+      "ToggleHUD": {
+        "Name": "Toggle Combat HUD",
+        "Hint": "Show or hide the combat HUD"
+      }
+    },
+    "Actions": {
+      "Action": "Action",
+      "BonusAction": "Bonus Action",
+      "Reaction": "Reaction",
+      "EndTurn": "End Turn",
+      "NotYourTurn": "Not Your Turn"
+    },
+    "Notifications": {
+      "ActionUsed": "Action used",
+      "BonusUsed": "Bonus Action used",
+      "ReactionUsed": "Reaction used",
+      "NotYourTurn": "It is not your turn!",
+      "ItemUseFailed": "Failed to use {name}"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+<div id="bg3-combat-hud" class="bg3-hud-wrapper" style="opacity: {{opacity}}; {{#unless visible}}display: none;{{/unless}}">
+  
+  <!-- Left: Portrait Panel -->
+  <div class="bg3-portrait-panel">
+    <div class="portrait-circle">
+      <img src="{{actor.img}}" alt="{{actor.name}}" class="portrait-img" data-testid="img-portrait" />
+      {{#if actor.conditions}}
+      <div class="portrait-conditions">
+        {{#each actor.conditions}}
+        <img src="{{this.icon}}" alt="{{this.name}}" class="condition-icon" title="{{this.name}}" />
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+    
+    <div class="portrait-stats">
+      <div class="portrait-name" data-testid="text-actor-name">{{actor.name}}</div>
+      <div class="hp-bar-wrapper">
+        <div class="hp-bar-bg">
+          <div class="hp-bar-fill" style="width: {{actor.hp.percentage}}%"></div>
+        </div>
+        <div class="hp-text" data-testid="text-hp">{{actor.hp.current}} / {{actor.hp.max}}</div>
+      </div>
+      <div class="ac-display">
+        <span class="ac-label">AC</span>
+        <span class="ac-value" data-testid="text-ac">{{actor.ac}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: Main Hotbar -->
+  <div class="bg3-hotbar-panel">
+    <!-- Top Row: Weapons & Actions & Spell Slots -->
+    <div class="hotbar-header">
+      <!-- Weapon Slots (0-1) -->
+      <div class="weapon-slots">
+        <div class="hotbar-slot weapon-slot" data-slot="0" title="Main Hand" data-testid="slot-weapon-0">
+          {{#if hotbarSlots.[0].item}}
+          <img src="{{hotbarSlots.[0].item.img}}" alt="{{hotbarSlots.[0].item.name}}" class="slot-img" />
+          {{/if}}
+          <div class="slot-number">{{hotbarSlots.[0].number}}</div>
+        </div>
+        <div class="hotbar-slot weapon-slot" data-slot="1" title="Off Hand" data-testid="slot-weapon-1">
+          {{#if hotbarSlots.[1].item}}
+          <img src="{{hotbarSlots.[1].item.img}}" alt="{{hotbarSlots.[1].item.name}}" class="slot-img" />
+          {{/if}}
+          <div class="slot-number">{{hotbarSlots.[1].number}}</div>
+        </div>
+      </div>
+      
+      <!-- Action Icons -->
+      <div class="action-icons">
+        <div class="action-icon" title="Action" data-testid="icon-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <div class="action-icon" title="Bonus Action" data-testid="icon-bonus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="action-icon" title="Reaction" data-testid="icon-reaction">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Spell Slots Display -->
+      {{#if spellSlots}}
+      <div class="spell-slots-display">
+        {{#each spellSlots}}
+        <div class="spell-level-group">
+          <span class="spell-level-num">{{this.level}}</span>
+          <div class="spell-pips">
+            {{#each this.pips}}
+            <div class="spell-pip {{#if this.used}}empty{{/if}}"></div>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+
+    <!-- Main Ability Hotbar (slots 2-11) -->
+    <div class="hotbar-abilities">
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[2].empty}}empty{{/if}}" data-slot="2" data-testid="slot-ability-2">
+        {{#if hotbarSlots.[2].item}}<img src="{{hotbarSlots.[2].item.img}}" alt="{{hotbarSlots.[2].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[2].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[3].empty}}empty{{/if}}" data-slot="3" data-testid="slot-ability-3">
+        {{#if hotbarSlots.[3].item}}<img src="{{hotbarSlots.[3].item.img}}" alt="{{hotbarSlots.[3].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[3].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[4].empty}}empty{{/if}}" data-slot="4" data-testid="slot-ability-4">
+        {{#if hotbarSlots.[4].item}}<img src="{{hotbarSlots.[4].item.img}}" alt="{{hotbarSlots.[4].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[4].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[5].empty}}empty{{/if}}" data-slot="5" data-testid="slot-ability-5">
+        {{#if hotbarSlots.[5].item}}<img src="{{hotbarSlots.[5].item.img}}" alt="{{hotbarSlots.[5].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[5].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[6].empty}}empty{{/if}}" data-slot="6" data-testid="slot-ability-6">
+        {{#if hotbarSlots.[6].item}}<img src="{{hotbarSlots.[6].item.img}}" alt="{{hotbarSlots.[6].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[6].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[7].empty}}empty{{/if}}" data-slot="7" data-testid="slot-ability-7">
+        {{#if hotbarSlots.[7].item}}<img src="{{hotbarSlots.[7].item.img}}" alt="{{hotbarSlots.[7].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[7].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[8].empty}}empty{{/if}}" data-slot="8" data-testid="slot-ability-8">
+        {{#if hotbarSlots.[8].item}}<img src="{{hotbarSlots.[8].item.img}}" alt="{{hotbarSlots.[8].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[8].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[9].empty}}empty{{/if}}" data-slot="9" data-testid="slot-ability-9">
+        {{#if hotbarSlots.[9].item}}<img src="{{hotbarSlots.[9].item.img}}" alt="{{hotbarSlots.[9].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[9].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[10].empty}}empty{{/if}}" data-slot="10" data-testid="slot-ability-10">
+        {{#if hotbarSlots.[10].item}}<img src="{{hotbarSlots.[10].item.img}}" alt="{{hotbarSlots.[10].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[10].number}}</div>
+      </div>
+      <div class="hotbar-slot ability-slot {{#if hotbarSlots.[11].empty}}empty{{/if}}" data-slot="11" data-testid="slot-ability-11">
+        {{#if hotbarSlots.[11].item}}<img src="{{hotbarSlots.[11].item.img}}" alt="{{hotbarSlots.[11].item.name}}" class="slot-img" />{{/if}}
+        <div class="slot-number">{{hotbarSlots.[11].number}}</div>
+      </div>
+    </div>
+
+    <!-- Bottom: Movement -->
+    <div class="hotbar-footer">
+      <div class="movement-display">
+        <svg class="movement-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/>
+        </svg>
+        <span class="movement-value" data-testid="text-movement">{{movement.remaining}}ft</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Rest Button -->
+  <div class="bg3-rest-panel">
+    <div class="rest-button" data-testid="button-rest" title="Rest">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </div>
+  </div>
+
+</div>
