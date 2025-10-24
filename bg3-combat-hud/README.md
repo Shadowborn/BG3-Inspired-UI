@@ -1,4 +1,7 @@
 # BG3 Inspired Combat HUD
+
+Get more on Patreon, or if you just want to say thanks! https://www.patreon.com/cw/sinwraith
+
 <img width="806" height="157" alt="image" src="https://github.com/user-attachments/assets/942041a5-37a3-4dd1-ae22-08ec84924a90" />
 
 
