@@ -14,6 +14,7 @@ A Baldur's Gate 3-inspired combat HUD module for Foundry Virtual Tabletop.
 - **Movement Display**: Real-time movement tracking
 - **End Turn Button**: Quick combat management
 - **Dark Fantasy Aesthetic**: Golden accents, ornate borders, and immersive styling
+- **Quick Rest**: Short rest / Long rest
 
 ## Installation
 
