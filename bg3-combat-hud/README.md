@@ -100,7 +100,7 @@ Hooks.on('bg3hud.ready', (hud) => {
 ## Credits
 
 - **Inspiration**: Baldur's Gate 3 by Larian Studios
-- **Module Developer**: Your Name
+- **Module Developer**: Sinwraith
 - **Framework**: Built on FoundryVTT Application API
 
 ## License
