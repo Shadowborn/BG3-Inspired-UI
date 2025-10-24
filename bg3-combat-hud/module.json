@@ -26,7 +26,7 @@
       "path": "lang/en.json"
     }
   ],
-  "url": "https://github.com/Shadowborn/BG3-Inspired-UI/bg3-combat-hud",
-  "manifest": "https://github.com/Shadowborn/BG3-Inspired-UI/bg3-combat-hud/module.json",
-  "download": "https://github.com/Shadowborn/BG3-Inspired-UI/bg3-combat-hud/module.zip"
+  "url": "https://github.com/yourusername/bg3-combat-hud",
+  "manifest": "https://github.com/Shadowborn/bg3-combat-hud/releases/latest/download/module.json",
+  "download": "https://github.com/Shadowborn/bg3-combat-hud/releases/latest/download/module.zip"
 }
